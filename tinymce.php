@@ -33,6 +33,6 @@ class AdminerTinyMce
 	public function head()
 	{
 		echo '<script type="text/javascript" src="' . $this->$folder_uri . '/tinymce.min.js"></script>';
-		echo '<script>tinymce.init({selector: "textarea", language: "' . get_lang() . '"});</script>';
+		echo '<script>tinymce.init({selector: "textarea[name^=\"fields\"]", language: "' . get_lang() . '"});</script>';
 	}
 }
