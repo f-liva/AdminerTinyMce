@@ -15,16 +15,16 @@ class AdminerTinyMce
 	/**
 	 * The root's relative URI of the plugin file.
 	 *
-	 * @var mixed
+	 * @var string
 	 */
-	protected $folder_uri;
+	protected $plugin_uri;
 
 	/**
 	 * Obtain the relative path.
 	 */
-	public function __construct($tinymce_folder = null)
+	public function __construct()
 	{
-		$this->folder_uri = $tinymce_folder ?: str_replace(dirname(__DIR__), '', __DIR__) . '/tinymce';
+		$this->plugin_uri = str_replace(dirname(__DIR__), '', __DIR__) . '/tinymce/tinymce.min.js';
 	}
 
 	/**
@@ -32,7 +32,7 @@ class AdminerTinyMce
 	 */
 	public function head()
 	{
-		echo '<script type="text/javascript" src="' . $this->$folder_uri . '/tinymce.min.js"></script>';
-		echo '<script>tinymce.init({selector: "textarea[name^=\"fields\"]", language: "' . get_lang() . '"});</script>';
+		echo '<script type="text/javascript" src="' . $this->plugin_uri . '"></script>';
+		echo '<script>tinymce.init({selector: "textarea[name^=\"fields\"]", language: "' . get_lang() . '", plugins: ["advlist","anchor","autolink","autoresize","autosave","bbcode","charmap","code","colorpicker","contextmenu","directionality","emoticons","example","example_dependency","fullpage","fullscreen","hr","image","insertdatetime","layer","legacyoutput","link","lists","importcss","media","nonbreaking","noneditable","pagebreak","paste","preview","print","save","searchreplace","spellchecker","tabfocus","table","template","textcolor","textpattern","visualblocks","visualchars","wordcount"]});</script>';
 	}
 }
